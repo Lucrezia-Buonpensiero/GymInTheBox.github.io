@@ -1,28 +1,48 @@
-------------------------------------
---- PROGETTO INTERFACCE UTENTE -----
-------------------------------------
---- AUTHOR: BUONPENSIERO LUCREZIA---
---- MATRICOLA: 110796 --------------
-------------------------------------
+
+# GymInTheBox
+
+WebApp sviluppata con framework Django, per la gestione di un sito di una palestra.
 
 
---- DB UTILIZZATO: SQLITE3 ---
 
---- CREAZIONE DB:
---- >$ python3 manage.py makemigrations
---- >$ python3 manage.py migrate
 
---- CREAZIONE SUPERUSER:
---- >$ python3 manage.py createsuperuser
+## AUTHOR: BUONPENSIERO LUCREZIA
+> MATRICOLA: 110796
 
---- AVVIO PROGETTO:
---- >$ python3 manage.py runserver
 
---- AVVIO TEST SULLE VIEW:
---- RUN ALL:
---- >$ python3 manage.py test
---- RUN USER TEST APP:
---- >$ python3 manage.py test user
+## DB Utilizzato: SQLITE3
 
---- AVVIO SERVER SMTP:
---- >$ python3 -m smtpd -n -c DebuggingServer localhost:1025
+### CREAZIONE DB
+```console
+ python3 manage.py makemigrations
+```
+```console
+ python3 manage.py migrate
+```
+
+### CREAZIONE SUPERUSER
+```console
+ $ python3 manage.py createsuperuser
+ ```
+
+### AVVIO PROGETTO
+```console
+ python3 manage.py runserver
+ ```
+
+### AVVIO TEST SULLE VIEW
+
+#### RUN ALL:
+```console
+ python3 manage.py test
+ ```
+
+#### RUN USER TEST APP:
+```console
+python3 manage.py test user
+ ```
+
+### AVVIO SERVER SMTP
+```console
+python3 -m smtpd -n -c DebuggingServer localhost:1025
+```
