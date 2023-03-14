@@ -1,0 +1,53 @@
+{% extends 'template_home/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="w3-container" style="padding-top: 10px">
+            <div class="w3-card-4 w3-dark-grey" style="width:50%; padding: 20px">
+                <div class="w3-container w3-center">
+                    <p>Sei già loggato</p>
+                    <a class="w3-button w3-block w3-dark-grey" href="{% url 'user:area_utente' %}">Vai all'area utente!</a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+
+    <div class="w3-card-4" style="width: 32%">
+        <header class="w3-container w3-light-grey">
+            <h1>GymInTheBox</h1>
+            <h2>Login Page</h2>
+        </header>
+
+        <div class="w3-container" style="padding: 10px">
+        <section>
+            {% for error_field, error_message in form.errors.items %}
+                {{ error_field|striptags }}: {{ error_message|striptags }}
+            {% endfor %}
+
+            <form class="w3-container" method="post">
+                {% csrf_token %}
+                <p>
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+                </p>
+                <p>
+                    {{ form.password.label_tag }}
+                    {{ form.password }}
+                </p>
+                {% if next %}
+                    <input type="hidden" name="next" value="{{ next }}"/>
+                {% else %}
+                    <input type="hidden" name="next" value="logged_in/area_utente/"/>
+                {% endif %}
+                <input class="w3-button w3-block w3-dark-grey" type="submit" value="login"/>
+            </form>
+
+            <p>Non hai un account?</p> <a class="w3-button w3-block w3-dark-grey" href="{% url 'user:registrazione' %}">Registrati!</a>
+            <p>Sei un amministratore?</p> <a class="w3-button w3-block w3-dark-grey" href="{% url 'admin:index' %}">Area amministratore!</a>
+        </section>
+        </div>
+    {% endif %}
+    </div>
+{% endblock %}

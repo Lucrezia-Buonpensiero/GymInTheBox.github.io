@@ -1,0 +1,43 @@
+{% extends 'template_home/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="w3-card-4" style="width: 77%;">
+        <header class="w3-container w3-light-grey">
+            <h1>Benvenuto {{ request.user.username }}</h1>
+        </header>
+
+        <div class="w3-container">
+            <p>Il tuo numero tessera: {{ numero_tessera }}</p>
+            <p>Email: {{ request.user.email }}</p>
+            <p>Nome: {{ request.user.first_name }}</p>
+            <p>Cognome: {{ request.user.last_name }}</p>
+        </div>
+
+        <a href="{% url 'user:logout_view' %}">
+            <input class="w3-button w3-block w3-dark-grey" type="submit" value="Logout">
+        </a>
+        <a href="{% url 'user:contact' %}">
+            <input class="w3-button w3-block w3-dark-grey" type="submit" value="Contattaci">
+        </a>
+
+            {% block body %}
+            {% endblock %}
+
+        <header class="w3-container w3-light-grey">
+            <h2>Notifiche: </h2>
+        </header>
+
+        <form action="{% url 'user:cancella_notifiche' %}" method="post">
+            {% csrf_token %}
+            {% for notifiche in lista_notifiche %}
+                <p> {{ notifiche.notifica }}</p>
+            {% endfor %}
+            <input class="w3-button w3-block w3-dark-grey" type="submit" value="Cancella!"/>
+        </form>
+        </div>
+
+
+    </div>
+{% endblock %}
+

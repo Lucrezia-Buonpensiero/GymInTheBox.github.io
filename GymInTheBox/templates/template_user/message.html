@@ -1,0 +1,11 @@
+{% extends 'template_home/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="w3-panel w3-red w3-display-container" style="width: 50%">
+        <span onclick="this.parentElement.style.display='none'"
+      class="w3-button w3-large w3-display-topright">&times;</span>
+        <p>{{ messaggio }}</p>
+    </div>
+    <a href="{{ request.META.HTTP_REFERER }}"><input class="w3-button w3-black" type="submit" value="Indietro"> </a>
+{% endblock %}

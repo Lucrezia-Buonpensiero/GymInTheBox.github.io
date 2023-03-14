@@ -1,0 +1,38 @@
+{%load static%}
+<!DOCTYPE html>
+
+<html lang="it">
+
+    <head>
+        <title>GymInTheBox</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="{%  static 'css/style.css' %}">
+    </head>
+
+    <div class="w3-row" style="max-width: 100%">
+    <header class="top-bar w3-container w3-teal">
+
+            <div class="link-bar w3-bar">
+                <div class="w3-col" style="width: 30%">
+                  <a href="/" class="w3-bar-item w3-hover-green">HOME</a>
+                  <a href="/corso" class="w3-bar-item w3-hover-green">LISTA CORSI</a>
+                  <a href="{% url 'user:area_utente' %}" class="w3-bar-item w3-hover-green">AREA UTENTE</a>
+                </div>
+
+                <div class="w3-col w3-display-topmiddle" style="width: 40%">
+                        <h1>GymInTheBox</h1>
+                </div>
+
+                <div style="width: 30%; float: right">
+                  <a href="/login" class="w3-bar-item w3-hover-green">LOGIN!</a>
+                </div>
+            </div>
+
+    </header>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+</html>

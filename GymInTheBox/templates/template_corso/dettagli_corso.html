@@ -1,0 +1,41 @@
+{% extends 'template_home/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="w3-container" style="padding-top: 10px">
+        <div class="w3-card-4" style="width:70%">
+            <header class="w3-container w3-light-grey">
+                <h1>Benvenuto nel corso di {{ corso_sel.nome_corso }}</h1>
+            </header>
+
+            <div class="w3-container">
+                <img class="w3-left w3-circle w3-margin-right" style="width:200px; padding-top: 10px; padding-bottom: 10px;" src="{{ corso_sel.immagine_corso.url }}" style="width: 250px;">
+                <p>SALA: {{ corso_sel.sala }}</p>
+                <p>GIORNO E ORA: {{ corso_sel.giorno }}</p>
+                <p>UTENTI PRENOTATI: {{ corso_sel.num_utenti_prenotati }} / {{ corso_sel.sala.capienza }}</p>
+            </div>
+
+        <form action="{% url 'corso:prenotazione_corso' corso_sel.pk %}" method="post">
+            {% csrf_token %}
+            <button class="w3-button w3-block w3-dark-grey">Prenotati al corso!</button>
+        </form>
+
+        <form action="{% url 'corso:cancella_prenotazione' corso_sel.pk %}" method="post">
+            {% csrf_token %}
+            <button class="w3-button w3-block w3-dark-grey">Cancella la prenotazione!</button>
+        </form>
+
+        {% if request.user.is_staff %}
+            <form action="{% url 'corso:modifica_corso' corso_sel.pk %}" method="get">
+                {% csrf_token %}
+                <button class="w3-button w3-block w3-orange">Modifica il corso!</button>
+            </form>
+
+            <form action="{% url 'corso:cancella_corso' corso_sel.pk %}" method="get">
+                {% csrf_token %}
+                <button class="w3-button w3-block w3-red">Cancella il corso!</button>
+            </form>
+        {% endif %}
+        </div>
+
+{% endblock %}

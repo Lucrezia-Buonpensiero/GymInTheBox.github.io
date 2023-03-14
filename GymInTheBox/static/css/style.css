@@ -1,0 +1,29 @@
+.link-bar{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.top-bar{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#home-backgroud{
+    background-image: url("/media/home_background.jpg");
+    height: 500px;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+footer{
+    background-color: teal;
+    padding: 30px;
+    color: #FFF;
+}
+
+a{
+    text-decoration: none;
+}

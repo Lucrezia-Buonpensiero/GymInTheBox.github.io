@@ -1,0 +1,10 @@
+{% extends 'template_home/base.html' %}
+{% load static %}
+
+{% block content %}
+    <form class="w3-card" style="max-width: 30%; padding: 20px" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="w3-button w3-block w3-red" type="submit" value="Aggiungi Corso">
+    </form>
+{% endblock %}

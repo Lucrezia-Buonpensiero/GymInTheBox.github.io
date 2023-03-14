@@ -1,0 +1,45 @@
+{% extends 'template_home/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="w3-container" style="width: 77%">
+        {% if lista_corsi %}
+            <h1>Scegli il Corso!</h1>
+                    {% for Corso in lista_corsi %}
+                        <form action="{% url 'corso:dettaglio_corso' Corso.id %}" method="post">
+                        {% csrf_token %}
+
+                            <div class="w3-container">
+                                <br><br>
+                                <ul class="w3-ul w3-card-4">
+                                    <li class="w3-bar">
+                                        <span class="w3-bar-item w3-button w3-white w3-large w3-right"  >
+                                                <input class="detail-button" type="submit" value="Dettagli"/>
+                                        </span>
+
+                                        <img src="{{ Corso.immagine_corso.url }}" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
+
+                                        <span class="w3-bar-item">
+                                            <span class="w3-large">{{ Corso.nome_corso }}</span>
+                                        </span>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </form>
+                    {% endfor %}
+                </form>
+        {% else %}
+            <div class="w3-card-4" style="width:70%; padding-top: 10px">
+                <div class="w3-ul w3-card-4">
+                    <header class="w3-container w3-light-grey">
+                        <h3>Non ci sono corsi</h3>
+                    </header>
+                    <div>
+                        <a href="{% url 'user:area_utente' %}"><input class="w3-button w3-block w3-dark-grey" type="submit" value="Vai all'area utente"> </a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        </div>
+{% endblock %}

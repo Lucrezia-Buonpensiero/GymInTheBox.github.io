@@ -1,0 +1,15 @@
+{% extends 'template_home/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+
+{% block content %}
+    <body id="home-layout" onload="Orologio()">
+        <div id="home-backgroud"></div>
+    </body>
+
+    <footer>
+        <span id="OROLOGIO">OROLOGIO</span>
+    </footer>
+
+    <script src="{% static 'js/orologio.js' %}"></script>
+{% endblock %}
